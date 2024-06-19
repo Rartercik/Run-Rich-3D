@@ -821,7 +821,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1340471651544761303}
   - component: {fileID: 2723993573869936701}
-  - component: {fileID: 1587639005}
   m_Layer: 0
   m_Name: cocktail_EndLevel
   m_TagString: Untagged
@@ -958,18 +957,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000026936177, y: -0.0026107896, z: -0.00061772147}
     m_Extent: {x: 0.0062828427, y: 0.008278128, z: 0.0022511138}
   m_DirtyAABB: 0
---- !u!114 &1587639005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633623604589246426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0eaf6b7cf2cc7c4b99089e5bc62591d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1691480591604788741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,6 +3295,7 @@ MonoBehaviour:
     _forwardSpeed: 3
   _interaction:
     _moneyVisualizer: {fileID: 1480871505}
+    _spinAnimation: {fileID: 7400000, guid: 4dd4c6d337064fb4fad1b71e87e473e0, type: 2}
     _money: 10
     _statuses:
     - Person: {fileID: 1958253704}
@@ -3316,7 +3304,7 @@ MonoBehaviour:
       MaxMoney: 30
     - Person: {fileID: 2057920291}
       MaxMoney: 45
-    - Person: {fileID: 1587639005}
+    - Person: {fileID: 4521207543140381630}
       MaxMoney: 60
     _statusIndex: 0
   _gameStarter: {fileID: 0}
@@ -3825,6 +3813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5049640102026563772}
   - component: {fileID: 5318865093847811516}
+  - component: {fileID: 4521207543140381630}
   m_Layer: 0
   m_Name: cocktail
   m_TagString: Untagged
@@ -3961,6 +3950,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000026936177, y: -0.0026107896, z: -0.00061772147}
     m_Extent: {x: 0.0062828427, y: 0.008278128, z: 0.0022511138}
   m_DirtyAABB: 0
+--- !u!114 &4521207543140381630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354955092109671218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0eaf6b7cf2cc7c4b99089e5bc62591d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8358449077761571877
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,13 @@ namespace Game.PlayerComponents
         [SerializeField] private PlayerInteraction _interaction;
         [SerializeField] private GameStarter _gameStarter;
 
+        private readonly string _walkKey = "Walk";
+        private readonly string _upsetKey = "Upset";
+        private readonly string _danceKey = "Dance";
+
         private bool _isPlaying;
+
+        public int Money => _interaction.Money;
 
         private void OnValidate()
         {
@@ -21,7 +27,7 @@ namespace Game.PlayerComponents
         private void Start()
         {
             _movement.Initialize(_rigidbody);
-            _interaction.Initialize(ProcessGameOver);
+            _interaction.Initialize(_animator, ProcessGameOver);
         }
 
         private void FixedUpdate()
@@ -33,7 +39,7 @@ namespace Game.PlayerComponents
 
         public void StartPlaying()
         {
-            _animator.SetTrigger("Walk");
+            _animator.SetTrigger(_walkKey);
             _isPlaying = true;
         }
 
@@ -50,19 +56,20 @@ namespace Game.PlayerComponents
         public void ProcessVictory()
         {
             Stop();
+            _animator.SetTrigger(_danceKey);
             _gameStarter.ProcessVictory();
         }
 
         private void ProcessGameOver()
         {
             Stop();
+            _animator.SetTrigger(_upsetKey);
             _gameStarter.ProcessGameOver();
         }
 
         private void Stop()
         {
             _rigidbody.velocity = Vector3.zero;
-            _animator.SetTrigger("Idle");
             _isPlaying = false;
         }
     }

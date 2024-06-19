@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Game.MenuComponents;
+using Game.Tools;
 
 namespace Game.PlayerComponents
 {
@@ -8,12 +9,18 @@ namespace Game.PlayerComponents
     public class PlayerInteraction
     {
         [SerializeField] private MoneyVisualizer _moneyVisualizer;
+        [SerializeField] private AnimationClip _spinAnimation;
         [SerializeField] private int _money;
         [SerializeField] private Status[] _statuses;
         [HideInInspector]
         [SerializeField] private int _statusIndex;
 
+        private readonly string _spinKey = "Spin";
+
+        private Animator _animator;
         private Action _onGameOver;
+
+        public int Money => _money;
 
         public void OnValidate()
         {
@@ -34,10 +41,11 @@ namespace Game.PlayerComponents
             UpdateStatus(_money);
         }
 
-        public void Initialize(Action onGameOver)
+        public void Initialize(Animator animator, Action onGameOver)
         {
             var maxBarValueIndex = _statuses.Length > 1 ? _statuses.Length - 2 : _statuses.Length - 1;
             _moneyVisualizer.Initialize(_statuses[maxBarValueIndex].MaxMoney + 1, _money);
+            _animator = animator;
             _onGameOver = onGameOver;
         }
 
@@ -61,6 +69,7 @@ namespace Game.PlayerComponents
 
         public void UpdateStatus(int money)
         {
+            var previousStatusIndex = _statusIndex;
             _statusIndex = 0;
             _statuses[0].Person.Deactivate();
             for (int i = 1; i < _statuses.Length; i++)
@@ -73,6 +82,13 @@ namespace Game.PlayerComponents
                 }
             }
 
+            if (previousStatusIndex != _statusIndex)
+            {
+                if (_animator.IsPlaying(_spinAnimation) == false)
+                {
+                    _animator.SetTrigger(_spinKey);
+                }
+            }
             _statuses[_statusIndex].Person.Activate();
         }
     }

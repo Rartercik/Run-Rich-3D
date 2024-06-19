@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizedLvls: 0
   lvls:
-  - {fileID: 7585673503332804306, guid: 017b52a35e286bf42a1e574aca1f86ad, type: 3}
-  - {fileID: 7585673503332804306, guid: 3a84c8473f858124585413e5b0617456, type: 3}
+  - {fileID: 330792121666078637, guid: 017b52a35e286bf42a1e574aca1f86ad, type: 3}
+  - {fileID: 330792121666078637, guid: 017b52a35e286bf42a1e574aca1f86ad, type: 3}

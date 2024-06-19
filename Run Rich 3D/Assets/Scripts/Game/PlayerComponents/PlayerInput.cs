@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Game.MenuComponents;
+using UnityEngine.EventSystems;
 
 namespace Game.PlayerComponents
 {
@@ -21,7 +23,7 @@ namespace Game.PlayerComponents
             var mouseX = _camera.ScreenToViewportPoint(mousePosition).x;
             mouseX = (mouseX - 0.5f) * _shiftBorders;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 _gameStarter.TryStartGame();
                 _currentPosition = _previousPosition = mouseX;
